@@ -10,10 +10,17 @@ export default function App() {
   const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
-    const link = document.createElement("link");
-    link.href = "https://fonts.googleapis.com/css2?family=Alfa+Slab+One&display=swap";
-    link.rel = "stylesheet";
-    document.head.appendChild(link);
+    // Memuat font "Alfa Slab One"
+    const fontLink = document.createElement("link");
+    fontLink.href = "https://fonts.googleapis.com/css2?family=Alfa+Slab+One&display=swap";
+    fontLink.rel = "stylesheet";
+    document.head.appendChild(fontLink);
+
+    // Memuat Font Awesome CDN (versi 6.5.2 yang lebih stabil)
+    const faLink = document.createElement("link");
+    faLink.href = "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css";
+    faLink.rel = "stylesheet";
+    document.head.appendChild(faLink);
 
     const checkIsMobile = () => {
       setIsMobile(window.innerWidth < 768);
@@ -24,12 +31,33 @@ export default function App() {
     window.addEventListener('resize', checkIsMobile);
 
     return () => {
-      document.head.removeChild(link);
+      document.head.removeChild(fontLink);
+      document.head.removeChild(faLink);
       window.removeEventListener('resize', checkIsMobile);
     };
   }, []);
 
   useEffect(() => {
+    const wrapText = (context: CanvasRenderingContext2D, text: string, maxWidth: number) => {
+      const words = text.split(' ');
+      let line = '';
+      const lines: string[] = [];
+
+      for (let n = 0; n < words.length; n++) {
+        const testLine = line + words[n] + ' ';
+        const metrics = context.measureText(testLine);
+        const testWidth = metrics.width;
+        if (testWidth > maxWidth && n > 0) {
+          lines.push(line);
+          line = words[n] + ' ';
+        } else {
+          line = testLine;
+        }
+      }
+      lines.push(line);
+      return lines;
+    };
+
     const drawMeme = () => {
       if (!canvasRef.current || !image || !canvasWrapperRef.current) return;
 
@@ -65,17 +93,23 @@ export default function App() {
       ctx.lineWidth = Math.max(2, fontSize / 20);
       ctx.textAlign = 'center';
 
-      const topTextY = fontSize + Math.max(10, fontSize * 0.1);
-      const bottomTextY = drawHeight - Math.max(20, fontSize * 0.4);
-
       if (topText) {
-        ctx.fillText(topText.toUpperCase(), drawWidth / 2, topTextY);
-        ctx.strokeText(topText.toUpperCase(), drawWidth / 2, topTextY);
+        const wrappedTopText = wrapText(ctx, topText.toUpperCase(), drawWidth * 0.9);
+        let topTextY = fontSize + Math.max(10, fontSize * 0.1);
+        wrappedTopText.forEach((line, index) => {
+          ctx.fillText(line, drawWidth / 2, topTextY + (index * fontSize * 1.1));
+          ctx.strokeText(line, drawWidth / 2, topTextY + (index * fontSize * 1.1));
+        });
       }
 
       if (bottomText) {
-        ctx.fillText(bottomText.toUpperCase(), drawWidth / 2, bottomTextY);
-        ctx.strokeText(bottomText.toUpperCase(), drawWidth / 2, bottomTextY);
+        const wrappedBottomText = wrapText(ctx, bottomText.toUpperCase(), drawWidth * 0.9);
+        let bottomTextY = drawHeight - (wrappedBottomText.length * fontSize * 1.1) + fontSize - Math.max(20, fontSize * 0.4);
+
+        wrappedBottomText.forEach((line, index) => {
+          ctx.fillText(line, drawWidth / 2, bottomTextY + (index * fontSize * 1.1));
+          ctx.strokeText(line, drawWidth / 2, bottomTextY + (index * fontSize * 1.1));
+        });
       }
     };
 
@@ -247,6 +281,21 @@ export default function App() {
                   </>
                 )}
               </button>
+
+              <div className="flex justify-center space-x-6 mt-6">
+                <a href="https://www.facebook.com/profile.php?id=61571239041200" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-blue-600 transition duration-200 text-3xl">
+                  <i className="fab fa-facebook-f"></i>
+                </a>
+                <a href="https://www.threads.com/@sts2020_" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-purple-600 transition duration-200 text-3xl">
+                  <i className="fa-brands fa-threads"></i>
+                </a>
+                <a href="https://whatsapp.com/channel/0029Vb64U5t0Qeacja9u3W18" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-green-500 transition duration-200 text-3xl">
+                  <i className="fab fa-whatsapp"></i>
+                </a>
+                <a href="https://www.instagram.com/sts2020_" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-pink-500 transition duration-200 text-3xl">
+                  <i className="fab fa-instagram"></i>
+                </a>
+              </div>
             </div>
           </div>
 
