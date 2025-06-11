@@ -281,7 +281,7 @@ export default function App() {
                   </>
                 )}
               </button>
-
+              <br />
               <div className="flex justify-center space-x-6 mt-6">
                 <a href="https://www.facebook.com/profile.php?id=61571239041200" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-blue-600 transition duration-200 text-3xl">
                   <i className="fab fa-facebook-f"></i>
