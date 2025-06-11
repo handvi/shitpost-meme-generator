@@ -10,13 +10,13 @@ export default function App() {
   const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
-    // Memuat font "Alfa Slab One"
+    
     const fontLink = document.createElement("link");
     fontLink.href = "https://fonts.googleapis.com/css2?family=Alfa+Slab+One&display=swap";
     fontLink.rel = "stylesheet";
     document.head.appendChild(fontLink);
 
-    // Memuat Font Awesome CDN (versi 6.5.2 yang lebih stabil)
+    
     const faLink = document.createElement("link");
     faLink.href = "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css";
     faLink.rel = "stylesheet";
