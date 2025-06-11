@@ -1,54 +1,46 @@
-# React + TypeScript + Vite
+💩 Neighbor Across Shitposts Meme Generator 🖼️
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A simple web application for generating hilarious memes, specifically optimized for mobile devices! Upload an image, add your top and bottom text, and instantly download your meme creation.
+🌟 Features
 
-Currently, two official plugins are available:
+ * Image Upload: Choose any image from your device as the foundation for your meme.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+ * Custom Text: Add customizable text overlays at the top and bottom of your meme.
 
-## Expanding the ESLint configuration
+ * Automatic Text Wrapping: Text automatically adjusts and wraps to new lines if it exceeds the image width,   
+   ensuring readability.
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+ * Mobile-First Design: The interface is precisely optimized for a seamless and intuitive mobile experience.
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+ * Meme Download: Save your generated meme as a high-quality PNG file.
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+ * Social Media Share Links: Quick links to share your memes directly to Facebook, Threads, WhatsApp, and Instagram 
+   (icons powered by Font Awesome).
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+📱 Accessibility
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
-```
+This application is exclusively designed for mobile use. If accessed from a desktop device, users will be redirected to an "Access Denied" screen, clearly stating that the app is only available on mobile.
+🛠️ Technologies Used
+
+ * React: A JavaScript library for building user interfaces.
+
+ * Tailwind CSS: A utility-first CSS framework for rapid and responsive design.
+
+ * HTML Canvas API: Utilized for dynamic image and text rendering.
+
+ * Font Awesome (via CDN): For crisp and scalable social media icons.
+
+ * Google Fonts ("Alfa Slab One"): Provides the distinct meme text font style.
+
+
+🌐 Live Demo
+
+This project is deployed and hosted on Vercel!
+You can access the live application here: [[Shipost Tetangga Sebrang]](https://shitpost-meme-generator.vercel.app/) (Please replace this with your actual Vercel URL after deployment)
+
+🤝 Contributing
+
+Contributions are highly welcome! If you have ideas for new features, bug fixes, or improvements, feel free to open an issue or submit a pull request.
+📜 License
+
+This project is licensed under the MIT License. See the LICENSE file for more details.
