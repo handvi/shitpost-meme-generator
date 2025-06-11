@@ -163,13 +163,13 @@ export default function App() {
     <div className="min-h-screen bg-gradient-to-br from-gray-900 to-gray-800 text-white p-4 font-sans flex flex-col">
       <div className="container mx-auto max-w-6xl flex-grow flex flex-col">
         <h1 className="text-3xl font-bold mb-6 text-center lg:hidden bg-gradient-to-r from-purple-400 to-green-400 bg-clip-text text-transparent">
-          🖼️ Meme Generator
+          🖼️ Meme Generator 🖼️
         </h1>
 
         <div className="flex flex-col lg:flex-row gap-6 bg-gray-800/50 backdrop-blur-sm rounded-2xl shadow-xl border border-gray-700 overflow-hidden flex-grow">
           <div className="w-full lg:w-1/3 p-5 md:p-6 bg-gray-800/30 order-2 lg:order-1 flex flex-col">
             <h1 className="hidden lg:block text-3xl font-bold mb-6 text-left bg-gradient-to-r from-purple-400 to-green-400 bg-clip-text text-transparent">
-              🖼️ Meme Generator
+              🖼️ Meme Generator 🖼️
             </h1>
 
             <div className="space-y-4 flex-grow flex flex-col">
